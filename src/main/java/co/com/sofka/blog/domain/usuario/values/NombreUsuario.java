@@ -1,2 +1,4 @@
-package co.com.sofka.blog.domain.usuario.values;public class NombreUsuario {
+package co.com.sofka.blog.domain.usuario.values;
+
+public class NombreUsuario {
 }
