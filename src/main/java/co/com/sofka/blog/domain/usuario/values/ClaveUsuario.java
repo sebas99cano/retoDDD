@@ -11,11 +11,11 @@ public class ClaveUsuario implements ValueObject<String> {
     public ClaveUsuario(String claveUsuario) {
 
         if(claveUsuario.length()<8){
-            throw new IllegalArgumentException("la clave de usuario no puede ser menor a 8 caracteres");
+            throw new IllegalArgumentException("La clave de usuario no puede ser menor a 8 caracteres");
         }
 
         if(claveUsuario.length()>20){
-            throw new IllegalArgumentException("la clave de usuario no puede ser mayor a 20 caracteres");
+            throw new IllegalArgumentException("La clave de usuario no puede ser mayor a 20 caracteres");
         }
 
         this.claveUsuario = Objects.requireNonNull(claveUsuario);
@@ -36,6 +36,6 @@ public class ClaveUsuario implements ValueObject<String> {
 
     @Override
     public String value() {
-        return null;
+        return claveUsuario;
     }
 }
