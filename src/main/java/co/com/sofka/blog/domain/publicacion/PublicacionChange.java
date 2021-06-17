@@ -3,14 +3,16 @@ package co.com.sofka.blog.domain.publicacion;
 import co.com.sofka.blog.domain.publicacion.events.*;
 import co.com.sofka.domain.generic.EventChange;
 
+import java.util.ArrayList;
+
 public class PublicacionChange extends EventChange {
     public PublicacionChange(Publicacion publicacion) {
 
         apply((PublicacionCreada event)->{
             publicacion.idUsuario = event.getIdUsuario();
             publicacion.contenido = event.getContenido();
-            publicacion.comentarios = event.getComentarios();
-            publicacion.valoraciones = event.getValoraciones();
+            publicacion.comentarios = new ArrayList<>();
+            publicacion.valoraciones = new ArrayList<>();
         });
 
         apply((PuntuacionDeValoracionModificado event)->{

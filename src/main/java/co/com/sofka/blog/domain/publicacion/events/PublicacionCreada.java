@@ -6,21 +6,20 @@ import co.com.sofka.blog.domain.publicacion.Valoracion;
 import co.com.sofka.blog.domain.usuario.values.IdUsuario;
 import co.com.sofka.domain.generic.DomainEvent;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PublicacionCreada extends DomainEvent {
 
     private final IdUsuario idUsuario;
     private final Contenido contenido;
-    private final List<Comentario> comentarios;
-    private final List<Valoracion> valoraciones;
 
-    public PublicacionCreada(IdUsuario idUsuario, Contenido contenido, List<Comentario> comentarios, List<Valoracion> valoraciones) {
+
+    public PublicacionCreada(IdUsuario idUsuario, Contenido contenido) {
         super("blog.publicacion.publicacioncreada");
         this.idUsuario = idUsuario;
         this.contenido = contenido;
-        this.comentarios = comentarios;
-        this.valoraciones = valoraciones;
+
     }
 
     public IdUsuario getIdUsuario() {
@@ -31,11 +30,4 @@ public class PublicacionCreada extends DomainEvent {
         return contenido;
     }
 
-    public List<Comentario> getComentarios() {
-        return comentarios;
-    }
-
-    public List<Valoracion> getValoraciones() {
-        return valoraciones;
-    }
 }
