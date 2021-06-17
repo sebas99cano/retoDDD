@@ -3,6 +3,8 @@ package co.com.sofka.blog.domain.usuario;
 import co.com.sofka.blog.domain.usuario.values.*;
 import co.com.sofka.domain.generic.Entity;
 
+import java.util.Objects;
+
 public class Persona extends Entity<IdPersona> {
 
     protected FechaNacimiento fechaNacimiento;
@@ -19,11 +21,11 @@ public class Persona extends Entity<IdPersona> {
     }
 
     public void modificarNombre(Nombre nombre){
-        this.nombre = nombre;
+        this.nombre = Objects.requireNonNull(nombre);
     }
 
     public void modificarTelefono(Telefono telefono){
-        this.telefono = telefono;
+        this.telefono = Objects.requireNonNull(telefono);
     }
 
     public FechaNacimiento fechaNacimiento(){
