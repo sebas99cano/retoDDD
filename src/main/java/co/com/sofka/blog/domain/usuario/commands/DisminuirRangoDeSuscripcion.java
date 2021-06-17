@@ -2,8 +2,9 @@ package co.com.sofka.blog.domain.usuario.commands;
 
 import co.com.sofka.blog.domain.usuario.values.IdUsuario;
 import co.com.sofka.blog.domain.usuario.values.Rango;
+import co.com.sofka.domain.generic.Command;
 
-public class DisminuirRangoDeSuscripcion {
+public class DisminuirRangoDeSuscripcion implements Command {
 
     private final IdUsuario idUsuario;
     private final Rango rango;

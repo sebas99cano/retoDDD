@@ -7,9 +7,10 @@ import co.com.sofka.domain.generic.DomainEvent;
 
 public class UsuarioCreado extends DomainEvent {
 
-    private final  Suscripcion suscripcion;
-    private final  Persona persona;
-    private final  Cuenta cuenta;
+
+    private final Suscripcion suscripcion;
+    private final Persona persona;
+    private final Cuenta cuenta;
 
     public UsuarioCreado(Suscripcion suscripcion, Persona persona, Cuenta cuenta) {
         super("blog.usuario.usuariocreado");

@@ -14,11 +14,11 @@ public class Usuario extends AggregateEvent<IdUsuario> {
     protected Persona persona;
     protected Cuenta cuenta;
 
-    public Usuario(IdUsuario entityId, Suscripcion _suscripcion, Persona _persona, Cuenta _cuenta) {
+    public Usuario(IdUsuario entityId, Suscripcion suscripcion, Persona persona, Cuenta cuenta) {
         super(entityId);
-        var suscripcion = Objects.requireNonNull(_suscripcion);
-        var persona = Objects.requireNonNull(_persona);
-        var cuenta = Objects.requireNonNull(_cuenta);
+        Objects.requireNonNull(suscripcion);
+        Objects.requireNonNull(persona);
+        Objects.requireNonNull(cuenta);
         appendChange(new UsuarioCreado(suscripcion, persona, cuenta)).apply();
     }
 

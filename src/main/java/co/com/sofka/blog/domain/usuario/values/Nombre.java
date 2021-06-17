@@ -9,8 +9,8 @@ public class Nombre implements ValueObject<String> {
     private final String nombre;
 
     public Nombre(String nombre) {
-        if(nombre.length()<15){
-            throw new IllegalArgumentException("El nombre no puede ser menor a 15 caracteres");
+        if(nombre.length()<5){
+            throw new IllegalArgumentException("El nombre no puede ser menor a 5 caracteres");
         }
 
         if(nombre.length()>75){

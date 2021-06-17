@@ -50,6 +50,10 @@ class CrearUsuarioUseCaseTest {
         //asserts
         UsuarioCreado usuarioCreado = (UsuarioCreado)events.get(0);
         Assertions.assertEquals("Sebastian cano grajales",usuarioCreado.getPersona().nombre().value());
+        Assertions.assertEquals("sebas99cano@gmail.com",usuarioCreado.getPersona().correo().value());
+        Assertions.assertEquals("clave123",usuarioCreado.getCuenta().claveUsuario().value());
+        Assertions.assertEquals("sebas99cano",usuarioCreado.getCuenta().nombreUsuario().value());
+        Assertions.assertEquals(1,usuarioCreado.getSuscripcion().rango().value());
     }
 
 }

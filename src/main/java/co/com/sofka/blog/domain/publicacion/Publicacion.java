@@ -16,11 +16,12 @@ public class Publicacion extends AggregateEvent<IdPublicacion> {
     protected List<Comentario> comentarios;
     protected List<Valoracion> valoraciones;
 
-    public Publicacion(IdPublicacion entityId, IdUsuario idUsuario, Contenido contenido) {
+    public Publicacion(IdPublicacion entityId, IdUsuario idUsuario,Descripcion descripcion, Titulo titulo) {
         super(entityId);
         Objects.requireNonNull(idUsuario);
-        Objects.requireNonNull(contenido);
-        appendChange(new PublicacionCreada(idUsuario,contenido)).apply();
+        Objects.requireNonNull(descripcion);
+        var idContenido = new IdContenido();
+        appendChange(new PublicacionCreada(idUsuario,idContenido,descripcion,titulo)).apply();
     }
 
     public Publicacion(IdPublicacion idPublicacion){
