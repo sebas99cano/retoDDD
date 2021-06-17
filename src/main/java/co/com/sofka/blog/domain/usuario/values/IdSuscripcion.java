@@ -1,5 +1,6 @@
-package co.com.sofka.blog.domain.publicacion.values;
+package co.com.sofka.blog.domain.usuario.values;
 
+import co.com.sofka.blog.domain.publicacion.values.IdPublicacion;
 import co.com.sofka.domain.generic.Identity;
 
 public class IdSuscripcion extends Identity {

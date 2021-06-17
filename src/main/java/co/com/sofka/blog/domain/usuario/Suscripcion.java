@@ -1,6 +1,6 @@
-package co.com.sofka.blog.domain.publicacion;
+package co.com.sofka.blog.domain.usuario;
 
-import co.com.sofka.blog.domain.publicacion.values.IdSuscripcion;
+import co.com.sofka.blog.domain.usuario.values.IdSuscripcion;
 import co.com.sofka.blog.domain.usuario.values.Precio;
 import co.com.sofka.blog.domain.usuario.values.Rango;
 import co.com.sofka.domain.generic.Entity;
