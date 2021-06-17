@@ -29,8 +29,6 @@ Dsrc/main/java/co/com/sofka/blog/domain/usuario/values/IdUsuario.java,d\7\d7b60
 Wsrc/main/java/co/com/sofka/blog/domain/usuario/events/RangoDeSuscripcionDisminuido.java,0\8\08a4a0c589425fe2ac1d22bc007baadf749b687d
 o
 ?src/main/java/co/com/sofka/blog/domain/usuario/Suscripcion.java,9\b\9b7e6cf232c855976b125ccd9fbb0ac4db9bdea2
-q
-Asrc/main/java/co/com/sofka/blog/domain/usuario/UsuarioChange.java,9\5\95488760637df60c3a3d5a117b5cb3c8b4fe603d
 x
 Hsrc/main/java/co/com/sofka/blog/domain/usuario/events/UsuarioCreado.java,1\5\15ad60b6d6524620a5b1e43340d94a887beeb5d2
 ‰
@@ -69,8 +67,6 @@ u
 Esrc/main/java/co/com/sofka/blog/domain/publicacion/values/Titulo.java,d\3\d3dbf39cd79fa4b8688c2d544d2102e0dfa11ab8
 z
 Jsrc/main/java/co/com/sofka/blog/domain/publicacion/values/IdContenido.java,3\0\307014211409fa12d3ed17d1bddb4f125f07b3c9
-q
-Asrc/main/java/co/com/sofka/blog/domain/publicacion/Contenido.java,c\6\c603a98d0f7bd1020de47c453425c28ba8e04f8e
 {
 Ksrc/main/java/co/com/sofka/blog/domain/publicacion/values/IdComentario.java,f\7\f7038517ed17be83ada82af30ec6e5f90e358a06
 k
