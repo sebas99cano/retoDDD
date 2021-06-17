@@ -53,8 +53,6 @@ Xsrc/main/java/co/com/sofka/blog/domain/usuario/commands/DisminuirRangoDeSuscrip
 Xsrc/main/java/co/com/sofka/blog/domain/usuario/events/PrecioDeSuscripcionModificado.java,6\3\63b3e8d55dbb25e3dc608d101d7b1e56b09bfabd
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
-y
-Isrc/main/java/co/com/sofka/blog/domain/usuario/commands/CrearUsuario.java,9\3\9380162139227c96f780dd4c038132f5290d5934
 ‰
 Ysrc/main/java/co/com/sofka/blog/domain/usuario/commands/ModificarPrecioDeSuscripcion.java,3\5\359b822d31e05cecb010ed4c3775f6d315f254cd
 |
