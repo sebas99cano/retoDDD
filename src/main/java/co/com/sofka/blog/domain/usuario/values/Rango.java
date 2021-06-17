@@ -19,14 +19,6 @@ public class Rango implements ValueObject<Integer> {
         this.rango = Objects.requireNonNull(rango);
     }
 
-    public Rango aumentar(){
-        return new Rango((this.rango+1));
-    }
-
-    public Rango disminuir(){
-        return new Rango((this.rango-1));
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -56,10 +56,10 @@ class ModificarClaveUsuarioDeCuentaUseCaseTest  {
                 new RequestCommand<>(command)
         ).orElseThrow();
 
-        var usuario = (ClaveUsuarioDeCuentaModificado)response.getDomainEvents().get(0);
+        var evento = (ClaveUsuarioDeCuentaModificado)response.getDomainEvents().get(0);
 
         //Assert
-        Assertions.assertEquals("nuevaclave",usuario.getClaveUsuario().value());
+        Assertions.assertEquals("nuevaclave",evento.getClaveUsuario().value());
     }
 
     private List<DomainEvent> events() {

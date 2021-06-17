@@ -56,11 +56,11 @@ class ModificarTelefonoDePersonaUseCaseTest {
                         modificarTelefonoDePersonaUseCase,
                         new RequestCommand<>(command)
                 ).orElseThrow();
-        var usuario = (TelefonoDePersonaModificado)response.getDomainEvents().get(0);
+        var evento = (TelefonoDePersonaModificado)response.getDomainEvents().get(0);
 
         //assert
 
-        Assertions.assertEquals("3004225879",usuario.getTelefono().value());
+        Assertions.assertEquals("3004225879",evento.getTelefono().value());
     }
 
     private List<DomainEvent> events() {

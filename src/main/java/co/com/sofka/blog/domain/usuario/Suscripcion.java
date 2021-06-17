@@ -17,11 +17,11 @@ public class Suscripcion extends Entity<IdSuscripcion> {
     }
 
     public void aumentarRango(Rango rango){
-        this.rango = rango.aumentar();
+        this.rango = rango;
     }
 
     public void disminuirRango(Rango rango){
-        this.rango = rango.disminuir();
+        this.rango = rango;
     }
 
     public void modificarPrecio(Precio precio){

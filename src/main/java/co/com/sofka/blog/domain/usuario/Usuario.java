@@ -48,12 +48,12 @@ public class Usuario extends AggregateEvent<IdUsuario> {
         appendChange(new TelefonoDePersonaModificado(telefono)).apply();
     }
 
-    public void aumentarRangoDeSuscripcion(){
-        appendChange(new RangoDeSuscripcionAumentado(this.suscripcion.rango)).apply();
+    public void aumentarRangoDeSuscripcion(Rango rango){
+        appendChange(new RangoDeSuscripcionAumentado(rango)).apply();
     }
 
-    public void disminuirRangoDeSuscripcion(){
-        appendChange(new RangoDeSuscripcionDisminuido(this.suscripcion.rango)).apply();
+    public void disminuirRangoDeSuscripcion(Rango rango){
+        appendChange(new RangoDeSuscripcionDisminuido(rango)).apply();
     }
 
     public void modificarPrecioDeSuscripcion(Precio precio){

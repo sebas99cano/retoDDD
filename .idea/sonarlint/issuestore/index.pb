@@ -13,8 +13,6 @@ y
 Isrc/main/java/co/com/sofka/blog/domain/publicacion/values/Puntuacion.java,d\b\dbb393058d165549ad188b49dd6a833c6d9489c2
 q
 Asrc/main/java/co/com/sofka/blog/domain/usuario/values/Precio.java,a\3\a39b5865359d1e5c4b5ae8133e883487a1530d47
-p
-@src/main/java/co/com/sofka/blog/domain/usuario/values/Rango.java,b\1\b1efc89c0f05ff893d9ce6a1472f8dee954a2e7b
 t
 Dsrc/main/java/co/com/sofka/blog/domain/usuario/values/IdPersona.java,1\1\11631682d95e6d4dd84806bcee5c9f8dc5f7cacb
 x
@@ -23,10 +21,6 @@ s
 Csrc/main/java/co/com/sofka/blog/domain/usuario/values/IdCuenta.java,3\e\3e8d7fa7dec03b39d3310650017cd295a4bc59f8
 t
 Dsrc/main/java/co/com/sofka/blog/domain/usuario/values/IdUsuario.java,d\7\d7b60599da6d4bb136d06ec0a38b2497404f01ce
-‡
-Wsrc/main/java/co/com/sofka/blog/domain/usuario/events/RangoDeSuscripcionDisminuido.java,0\8\08a4a0c589425fe2ac1d22bc007baadf749b687d
-o
-?src/main/java/co/com/sofka/blog/domain/usuario/Suscripcion.java,9\b\9b7e6cf232c855976b125ccd9fbb0ac4db9bdea2
 ‰
 Ysrc/main/java/co/com/sofka/blog/domain/usuario/events/ClaveUsuarioDeCuentaModificado.java,0\3\03d42fe96c2577a0c974ca6253c0c905bde57519
 „

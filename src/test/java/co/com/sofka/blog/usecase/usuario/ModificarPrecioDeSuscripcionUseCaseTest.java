@@ -3,8 +3,8 @@ package co.com.sofka.blog.usecase.usuario;
 import co.com.sofka.blog.domain.usuario.Cuenta;
 import co.com.sofka.blog.domain.usuario.Persona;
 import co.com.sofka.blog.domain.usuario.Suscripcion;
-import co.com.sofka.blog.domain.usuario.commands.ModificarNombreDePersona;
-import co.com.sofka.blog.domain.usuario.events.NombreDePersonaModificado;
+import co.com.sofka.blog.domain.usuario.commands.ModificarPrecioDeSuscripcion;
+import co.com.sofka.blog.domain.usuario.events.PrecioDeSuscripcionModificado;
 import co.com.sofka.blog.domain.usuario.events.UsuarioCreado;
 import co.com.sofka.blog.domain.usuario.values.*;
 import co.com.sofka.business.generic.UseCaseHandler;
@@ -24,49 +24,47 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-class ModificarNombreDePersonaUseCaseTest {
+class ModificarPrecioDeSuscripcionUseCaseTest {
 
-    private ModificarNombreDePersonaUseCase modificarNombreDePersonaUseCase;
+    private ModificarPrecioDeSuscripcionUseCase modificarPrecioDeSuscripcionUseCase;
 
     @Mock
     private DomainEventRepository repository;
 
     @BeforeEach
-    public void setup(){
-        modificarNombreDePersonaUseCase = new ModificarNombreDePersonaUseCase();
+    private void setup(){
+        modificarPrecioDeSuscripcionUseCase = new ModificarPrecioDeSuscripcionUseCase();
         repository = mock(DomainEventRepository.class);
-        modificarNombreDePersonaUseCase.addRepository(repository);
+        modificarPrecioDeSuscripcionUseCase.addRepository(repository);
     }
 
     @Test
-    void modificarNombreDePersonaHappyPath(){
+    void modificarPrecioDeSuscripcionHappyPath(){
         //arrange
-        var command = new ModificarNombreDePersona(
+        var command = new ModificarPrecioDeSuscripcion(
                 IdUsuario.of("xxx-xxx"),
-                new Nombre("Juan Sebastian")
+                new Precio("100000")
         );
 
         when(repository.getEventsBy(any())).thenReturn(events());
 
         //act
-
-        var response = UseCaseHandler.getInstance().
-                setIdentifyExecutor("xxx-xxx").syncExecutor(
-                        modificarNombreDePersonaUseCase,
-                new RequestCommand<>(command)
-        ).orElseThrow();
-
-        var evento = (NombreDePersonaModificado)response.getDomainEvents().get(0);
-
-        //
-        Assertions.assertEquals("Juan Sebastian",evento.getNombre().value());
+        var response = UseCaseHandler.getInstance()
+                .setIdentifyExecutor("xxx-xxxx")
+                .syncExecutor(
+                        modificarPrecioDeSuscripcionUseCase,
+                        new RequestCommand<>(command)
+                ).orElseThrow();
+        var evento = (PrecioDeSuscripcionModificado)response.getDomainEvents().get(0);
+        //assert
+        Assertions.assertEquals("100000",evento.getPrecio().value());
     }
 
     private List<DomainEvent> events() {
         return List.of(new UsuarioCreado(
                 new Suscripcion(new IdSuscripcion("xxx-xx1"),
                         new Precio("50000"),
-                        new Rango(1)),
+                        new Rango(2)),
                 new Persona(new IdPersona("xxx-xx2"),
                         new FechaNacimiento(new Date(100,5,3)),
                         new Nombre("Sebastian cano grajales"),
@@ -77,5 +75,7 @@ class ModificarNombreDePersonaUseCaseTest {
                         new NombreUsuario("sebas99cano"))
         ));
     }
+
+
 
 }

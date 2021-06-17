@@ -3,8 +3,8 @@ package co.com.sofka.blog.usecase.usuario;
 import co.com.sofka.blog.domain.usuario.Cuenta;
 import co.com.sofka.blog.domain.usuario.Persona;
 import co.com.sofka.blog.domain.usuario.Suscripcion;
-import co.com.sofka.blog.domain.usuario.commands.ModificarNombreDePersona;
-import co.com.sofka.blog.domain.usuario.events.NombreDePersonaModificado;
+import co.com.sofka.blog.domain.usuario.commands.AumentarRangoDeSuscripcion;
+import co.com.sofka.blog.domain.usuario.events.RangoDeSuscripcionAumentado;
 import co.com.sofka.blog.domain.usuario.events.UsuarioCreado;
 import co.com.sofka.blog.domain.usuario.values.*;
 import co.com.sofka.business.generic.UseCaseHandler;
@@ -24,42 +24,58 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-class ModificarNombreDePersonaUseCaseTest {
+class AumentarRangoDeSuscripcionUseCaseTest {
 
-    private ModificarNombreDePersonaUseCase modificarNombreDePersonaUseCase;
+    private AumentarRangoDeSuscripcionUseCase aumentarRangoDeSuscripcionUseCase;
 
     @Mock
     private DomainEventRepository repository;
 
     @BeforeEach
-    public void setup(){
-        modificarNombreDePersonaUseCase = new ModificarNombreDePersonaUseCase();
+    public void setup() {
+        aumentarRangoDeSuscripcionUseCase = new AumentarRangoDeSuscripcionUseCase();
         repository = mock(DomainEventRepository.class);
-        modificarNombreDePersonaUseCase.addRepository(repository);
+        aumentarRangoDeSuscripcionUseCase.addRepository(repository);
     }
 
     @Test
-    void modificarNombreDePersonaHappyPath(){
+    void aumentarRangoDeSuscripcionHappyPath() {
         //arrange
-        var command = new ModificarNombreDePersona(
+        var command = new AumentarRangoDeSuscripcion(
                 IdUsuario.of("xxx-xxx"),
-                new Nombre("Juan Sebastian")
+                new Rango(2)
         );
 
         when(repository.getEventsBy(any())).thenReturn(events());
 
         //act
 
-        var response = UseCaseHandler.getInstance().
-                setIdentifyExecutor("xxx-xxx").syncExecutor(
-                        modificarNombreDePersonaUseCase,
-                new RequestCommand<>(command)
-        ).orElseThrow();
+        var response = UseCaseHandler.getInstance()
+                .setIdentifyExecutor("xxx-xxx")
+                .syncExecutor(
+                        aumentarRangoDeSuscripcionUseCase,
+                        new RequestCommand<>(command)
+                ).orElseThrow();
+        var evento = (RangoDeSuscripcionAumentado) response.getDomainEvents().get(0);
 
-        var evento = (NombreDePersonaModificado)response.getDomainEvents().get(0);
+        //assert
 
-        //
-        Assertions.assertEquals("Juan Sebastian",evento.getNombre().value());
+        Assertions.assertEquals(2, evento.getRango().value());
+    }
+
+    @Test
+    void aumentarRangoDeSuscripcionSadPath() {
+        var response = Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            var command = new AumentarRangoDeSuscripcion(
+                    IdUsuario.of("xxx-xxx"),
+                    new Rango(4)
+            );
+            when(repository.getEventsBy(any())).thenReturn(events());
+        });
+
+        //Assert
+        Assertions.assertEquals("El rango no es valido, debe ser un valor entre 1 y 3",response.getMessage());
+
     }
 
     private List<DomainEvent> events() {
@@ -68,7 +84,7 @@ class ModificarNombreDePersonaUseCaseTest {
                         new Precio("50000"),
                         new Rango(1)),
                 new Persona(new IdPersona("xxx-xx2"),
-                        new FechaNacimiento(new Date(100,5,3)),
+                        new FechaNacimiento(new Date(100, 5, 3)),
                         new Nombre("Sebastian cano grajales"),
                         new Correo("sebas99cano@gmail.com"),
                         new Telefono("3058935891")),
