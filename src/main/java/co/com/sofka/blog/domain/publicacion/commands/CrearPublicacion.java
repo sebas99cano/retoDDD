@@ -1,7 +1,9 @@
 package co.com.sofka.blog.domain.publicacion.commands;
 
 import co.com.sofka.blog.domain.publicacion.Contenido;
+import co.com.sofka.blog.domain.publicacion.values.Descripcion;
 import co.com.sofka.blog.domain.publicacion.values.IdPublicacion;
+import co.com.sofka.blog.domain.publicacion.values.Titulo;
 import co.com.sofka.blog.domain.usuario.values.IdUsuario;
 import co.com.sofka.domain.generic.Command;
 
@@ -9,13 +11,15 @@ import co.com.sofka.domain.generic.Command;
 public class CrearPublicacion implements Command {
     private final IdPublicacion idPublicacion;
     private final IdUsuario idUsuario;
-    private final Contenido contenido;
+    private final Descripcion descripcion;
+    private final Titulo titulo;
 
 
-    public CrearPublicacion(IdPublicacion idPublicacion, IdUsuario idUsuario, Contenido contenido) {
+    public CrearPublicacion(IdPublicacion idPublicacion, IdUsuario idUsuario, Descripcion descripcion, Titulo titulo) {
         this.idPublicacion = idPublicacion;
         this.idUsuario = idUsuario;
-        this.contenido = contenido;
+        this.descripcion = descripcion;
+        this.titulo = titulo;
     }
 
     public IdPublicacion getIdPublicacion() {
@@ -26,8 +30,11 @@ public class CrearPublicacion implements Command {
         return idUsuario;
     }
 
-    public Contenido getContenido() {
-        return contenido;
+    public Descripcion getDescripcion() {
+        return descripcion;
     }
 
+    public Titulo getTitulo() {
+        return titulo;
+    }
 }

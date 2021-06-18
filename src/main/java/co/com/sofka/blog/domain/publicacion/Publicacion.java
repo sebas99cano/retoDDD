@@ -20,6 +20,7 @@ public class Publicacion extends AggregateEvent<IdPublicacion> {
         super(entityId);
         Objects.requireNonNull(idUsuario);
         Objects.requireNonNull(descripcion);
+        Objects.requireNonNull(titulo);
         var idContenido = new IdContenido();
         appendChange(new PublicacionCreada(idUsuario,idContenido,descripcion,titulo)).apply();
     }
