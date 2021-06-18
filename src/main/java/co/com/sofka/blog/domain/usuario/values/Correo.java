@@ -3,6 +3,8 @@ package co.com.sofka.blog.domain.usuario.values;
 import co.com.sofka.domain.generic.ValueObject;
 
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Correo implements ValueObject<String> {
 
@@ -10,12 +12,20 @@ public class Correo implements ValueObject<String> {
 
     public Correo(String value) {
 
-        if(value.length()<15){
-            throw new IllegalArgumentException("El correo no puede ser menor a 15 caracteres");
+        if(value.length()<10){
+            throw new IllegalArgumentException("El correo no puede ser menor a 10 caracteres");
         }
 
-        if(value.length()>75){
-            throw new IllegalArgumentException("El correo no puede ser mayor a 75 caracteres");
+        if(value.length()>100){
+            throw new IllegalArgumentException("El correo no puede ser mayor a 100 caracteres");
+        }
+        //validar el correo
+        Pattern pattern = Pattern
+                .compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                        + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+        Matcher mather = pattern.matcher(value);
+        if(!mather.find()){
+            throw new IllegalArgumentException("El correo ingresado no es valido");
         }
         this.value = Objects.requireNonNull(value);
     }
