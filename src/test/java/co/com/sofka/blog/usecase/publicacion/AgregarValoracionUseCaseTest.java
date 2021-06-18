@@ -35,6 +35,7 @@ class AgregarValoracionUseCaseTest {
 
     @Test
     void agregarValoracionHappyPath(){
+        //
         var command = new AgregarValoracion(
                 IdPublicacion.of("xxx-xxx"),
                 IdValoracion.of("xx-xx"),
@@ -46,7 +47,7 @@ class AgregarValoracionUseCaseTest {
         );
 
         when(repository.getEventsBy(any())).thenReturn(events());
-
+    //ACT
         var response = UseCaseHandler.getInstance()
                 .setIdentifyExecutor("xxx-xxx")
                 .syncExecutor(
@@ -54,6 +55,8 @@ class AgregarValoracionUseCaseTest {
                         new RequestCommand<>(command)
                 ).orElseThrow();
         var evento = (ValoracionAgregada)response.getDomainEvents().get(0);
+
+        //ASSERT
         Assertions.assertEquals(3,evento.getPuntuacion().value());
         Assertions.assertEquals("xx-xx",evento.getIdValoracion().value());
         Assertions.assertEquals("id-user-1",evento.getAutor().value().idUsuario().value());
