@@ -29,7 +29,7 @@ class CrearPublicacionUseCaseTest {
         var command = new CrearPublicacion(
                 IdPublicacion.of("xxx-xxx-xxx"),
                 IdUsuario.of("xxx-xxx"),
-                new Descripcion("esta es la descripcion para la primer publicacion"),
+                new Descripcion("Esta es la descripcion para la primer publicacion"),
                 new Titulo("Primer titulo")
         );
         //act

@@ -24,7 +24,7 @@ public class Correo implements ValueObject<String> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Correo correo1 = (Correo) o;
+        var correo1 = (Correo) o;
         return Objects.equals(correo, correo1.correo);
     }
 
