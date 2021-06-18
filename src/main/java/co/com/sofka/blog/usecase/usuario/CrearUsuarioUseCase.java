@@ -11,7 +11,6 @@ public class CrearUsuarioUseCase extends UseCase<RequestCommand<CrearUsuario>, R
     public void executeUseCase(RequestCommand<CrearUsuario> crearUsuarioRequestCommand) {
         var commnad = crearUsuarioRequestCommand.getCommand();
         var usuario = new Usuario(commnad.getIdUsuario(), commnad.getSuscripcion(), commnad.getPersona(), commnad.getCuenta());
-        //aqui las reglas de negocio
         emit().onResponse(new ResponseEvents(usuario.getUncommittedChanges()));
     }
 }

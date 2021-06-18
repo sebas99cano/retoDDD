@@ -43,12 +43,14 @@ class CrearUsuarioUseCaseTest {
         );
 
         //act
-        var response=UseCaseHandler.getInstance().syncExecutor(crearUsuarioUseCase, new RequestCommand<>(command)).orElseThrow();
+        var response=UseCaseHandler.getInstance().
+                syncExecutor(crearUsuarioUseCase, new RequestCommand<>(command)).orElseThrow();
 
         var events = response.getDomainEvents();
 
         //asserts
         UsuarioCreado usuarioCreado = (UsuarioCreado)events.get(0);
+
         Assertions.assertEquals("Sebastian cano grajales",usuarioCreado.getPersona().nombre().value());
         Assertions.assertEquals("sebas99cano@gmail.com",usuarioCreado.getPersona().correo().value());
         Assertions.assertEquals("clave123",usuarioCreado.getCuenta().claveUsuario().value());

@@ -60,6 +60,7 @@ class ModificarNombreDePersonaUseCaseTest {
 
         //
         Assertions.assertEquals("Juan Sebastian",evento.getNombre().value());
+        Assertions.assertEquals("blog.usuario.nombredepersonamodificado",evento.type);
     }
 
     private List<DomainEvent> events() {
