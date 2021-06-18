@@ -42,7 +42,7 @@ class CrearPublicacionUseCaseTest {
         var events = (PublicacionCreada)response.getDomainEvents().get(0);
         //assert
         Assertions.assertEquals("Primer titulo", events.getTitulo().value());
-        Assertions.assertEquals("esta es la descripcion para la primer publicacion", events.getDescripcion().value());
+        Assertions.assertEquals("Esta es la descripcion para la primer publicacion", events.getDescripcion().value());
         Assertions.assertEquals("xxx-xxx", events.getIdUsuario().value());
     }
 

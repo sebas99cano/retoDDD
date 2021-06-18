@@ -33,8 +33,6 @@ Vsrc/main/java/co/com/sofka/blog/domain/usuario/events/RangoDeSuscripcionAumenta
 Xsrc/main/java/co/com/sofka/blog/domain/usuario/events/PrecioDeSuscripcionModificado.java,6\3\63b3e8d55dbb25e3dc608d101d7b1e56b09bfabd
 |
 Lsrc/main/java/co/com/sofka/blog/domain/publicacion/values/IdPublicacion.java,9\3\93b7119de7828fb4c9341029633515e57473646c
-t
-Dsrc/main/java/co/com/sofka/blog/domain/publicacion/values/Autor.java,e\1\e19727bf31fd3da65b6b7d974637b290cac57e35
 u
 Esrc/main/java/co/com/sofka/blog/domain/publicacion/values/Titulo.java,d\3\d3dbf39cd79fa4b8688c2d544d2102e0dfa11ab8
 z

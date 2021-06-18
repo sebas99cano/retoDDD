@@ -20,12 +20,12 @@ public class Autor implements ValueObject<Autor.Props> {
         return new Props() {
             @Override
             public IdUsuario idUsuario() {
-                return this.idUsuario();
+                return idUsuario;
             }
 
             @Override
             public String nombre() {
-                return this.nombre();
+                return nombre;
             }
         };
     }
