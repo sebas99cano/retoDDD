@@ -6,36 +6,36 @@ import java.util.Objects;
 
 public class Titulo implements ValueObject<String> {
 
-    private final String titulo;
+    private final String value;
 
-    public Titulo(String titulo) {
+    public Titulo(String value) {
 
-        if(titulo.length()<3){
+        if(value.length()<3){
             throw new IllegalArgumentException("El titulo no puede ser menor a 3 caracteres");
         }
 
-        if(titulo.length()>30){
+        if(value.length()>30){
             throw new IllegalArgumentException("El titulo no puede ser mayor a 30 caracteres");
         }
 
-        this.titulo = Objects.requireNonNull(titulo);
+        this.value = Objects.requireNonNull(value);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Titulo titulo1 = (Titulo) o;
-        return Objects.equals(titulo, titulo1.titulo);
+        var titulo1 = (Titulo) o;
+        return Objects.equals(value, titulo1.value);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(titulo);
+        return Objects.hash(value);
     }
 
     @Override
     public String value() {
-        return titulo;
+        return value;
     }
 }

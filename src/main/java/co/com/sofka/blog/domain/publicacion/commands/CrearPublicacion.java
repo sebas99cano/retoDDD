@@ -1,6 +1,5 @@
 package co.com.sofka.blog.domain.publicacion.commands;
 
-import co.com.sofka.blog.domain.publicacion.Contenido;
 import co.com.sofka.blog.domain.publicacion.values.Descripcion;
 import co.com.sofka.blog.domain.publicacion.values.IdPublicacion;
 import co.com.sofka.blog.domain.publicacion.values.Titulo;

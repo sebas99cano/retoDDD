@@ -22,11 +22,11 @@ public class Valoracion extends Entity<IdValoracion> {
         this.puntuacion = Objects.requireNonNull(puntuacion);
     }
 
-    public Autor Autor() {
+    public Autor autor() {
         return this.autor;
     }
 
-    public Puntuacion Puntuacion() {
+    public Puntuacion puntuacion() {
         return this.puntuacion;
     }
 }

@@ -5,18 +5,18 @@ import co.com.sofka.domain.generic.ValueObject;
 import java.util.Objects;
 
 public class Puntuacion implements ValueObject<Integer> {
-    private final Integer puntuacion;
+    private final Integer value;
 
-    public Puntuacion(Integer puntuacion) {
+    public Puntuacion(Integer value) {
 
-        if(puntuacion<1){
+        if(value <1){
             throw new IllegalArgumentException("La puntuacion no es valido, debe ser un valor entre 1 y 5");
         }
-        if(puntuacion>5){
+        if(value >5){
             throw new IllegalArgumentException("La puntuacion no es valido, debe ser un valor entre 1 y 5");
         }
 
-        this.puntuacion = Objects.requireNonNull(puntuacion);
+        this.value = Objects.requireNonNull(value);
     }
 
     @Override
@@ -24,16 +24,16 @@ public class Puntuacion implements ValueObject<Integer> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Puntuacion that = (Puntuacion) o;
-        return Objects.equals(puntuacion, that.puntuacion);
+        return Objects.equals(value, that.value);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(puntuacion);
+        return Objects.hash(value);
     }
 
     @Override
     public Integer value() {
-        return puntuacion;
+        return value;
     }
 }

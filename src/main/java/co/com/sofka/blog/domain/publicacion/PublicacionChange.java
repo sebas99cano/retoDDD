@@ -1,7 +1,6 @@
 package co.com.sofka.blog.domain.publicacion;
 
 import co.com.sofka.blog.domain.publicacion.events.*;
-import co.com.sofka.blog.domain.publicacion.values.IdContenido;
 import co.com.sofka.domain.generic.EventChange;
 
 import java.util.ArrayList;

@@ -6,19 +6,19 @@ import java.util.Objects;
 
 public class ClaveUsuario implements ValueObject<String> {
 
-    private final String claveUsuario;
+    private final String value;
 
-    public ClaveUsuario(String claveUsuario) {
+    public ClaveUsuario(String value) {
 
-        if(claveUsuario.length()<8){
+        if(value.length()<8){
             throw new IllegalArgumentException("La clave de usuario no puede ser menor a 8 caracteres");
         }
 
-        if(claveUsuario.length()>20){
+        if(value.length()>20){
             throw new IllegalArgumentException("La clave de usuario no puede ser mayor a 20 caracteres");
         }
 
-        this.claveUsuario = Objects.requireNonNull(claveUsuario);
+        this.value = Objects.requireNonNull(value);
     }
 
     @Override
@@ -26,16 +26,16 @@ public class ClaveUsuario implements ValueObject<String> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ClaveUsuario that = (ClaveUsuario) o;
-        return Objects.equals(claveUsuario, that.claveUsuario);
+        return Objects.equals(value, that.value);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(claveUsuario);
+        return Objects.hash(value);
     }
 
     @Override
     public String value() {
-        return claveUsuario;
+        return value;
     }
 }

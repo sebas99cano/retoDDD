@@ -6,18 +6,18 @@ import java.util.Objects;
 
 public class Correo implements ValueObject<String> {
 
-    private final String correo;
+    private final String value;
 
-    public Correo(String correo) {
+    public Correo(String value) {
 
-        if(correo.length()<15){
+        if(value.length()<15){
             throw new IllegalArgumentException("El correo no puede ser menor a 15 caracteres");
         }
 
-        if(correo.length()>75){
+        if(value.length()>75){
             throw new IllegalArgumentException("El correo no puede ser mayor a 75 caracteres");
         }
-        this.correo = Objects.requireNonNull(correo);
+        this.value = Objects.requireNonNull(value);
     }
 
     @Override
@@ -25,16 +25,16 @@ public class Correo implements ValueObject<String> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         var correo1 = (Correo) o;
-        return Objects.equals(correo, correo1.correo);
+        return Objects.equals(value, correo1.value);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(correo);
+        return Objects.hash(value);
     }
 
     @Override
     public String value() {
-        return correo;
+        return value;
     }
 }

@@ -5,7 +5,7 @@ import co.com.sofka.blog.domain.usuario.values.Precio;
 import co.com.sofka.blog.domain.usuario.values.Rango;
 import co.com.sofka.domain.generic.Entity;
 
-public class Suscripcion extends Entity<IdSuscripcion> {
+public class Suscripcion extends Entity<IdSuscripcion>{
 
     protected Precio precio;
     protected Rango rango;

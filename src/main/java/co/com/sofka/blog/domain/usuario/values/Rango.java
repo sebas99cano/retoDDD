@@ -5,35 +5,35 @@ import co.com.sofka.domain.generic.ValueObject;
 import java.util.Objects;
 
 public class Rango implements ValueObject<Integer> {
-    private final Integer rango;
+    private final Integer value;
 
-    public Rango(Integer rango) {
+    public Rango(Integer value) {
 
-        if(rango<1){
+        if(value <1){
             throw new IllegalArgumentException("El rango no es valido, debe ser un valor entre 1 y 3");
         }
-        if(rango>3){
+        if(value >3){
             throw new IllegalArgumentException("El rango no es valido, debe ser un valor entre 1 y 3");
         }
 
-        this.rango = Objects.requireNonNull(rango);
+        this.value = Objects.requireNonNull(value);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Rango rango1 = (Rango) o;
-        return Objects.equals(rango, rango1.rango);
+        var rango1 = (Rango) o;
+        return Objects.equals(value, rango1.value);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(rango);
+        return Objects.hash(value);
     }
 
     @Override
     public Integer value() {
-        return rango;
+        return value;
     }
 }

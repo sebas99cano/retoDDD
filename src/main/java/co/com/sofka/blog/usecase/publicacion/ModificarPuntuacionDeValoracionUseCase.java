@@ -1,7 +1,6 @@
 package co.com.sofka.blog.usecase.publicacion;
 
 import co.com.sofka.blog.domain.publicacion.Publicacion;
-import co.com.sofka.blog.domain.publicacion.Valoracion;
 import co.com.sofka.blog.domain.publicacion.commands.ModificarPuntuacionDeValoracion;
 import co.com.sofka.business.generic.UseCase;
 import co.com.sofka.business.support.RequestCommand;

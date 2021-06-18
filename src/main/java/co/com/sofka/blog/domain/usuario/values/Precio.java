@@ -6,15 +6,15 @@ import java.util.Objects;
 
 public class Precio implements ValueObject<String> {
 
-    private final String precio;
+    private final String value;
 
-    public Precio(String precio) {
+    public Precio(String value) {
 
-        validarLongitudPrecio(precio);
+        validarLongitudPrecio(value);
 
-        validarNumeroPrecio(precio);
+        validarNumeroPrecio(value);
 
-        this.precio = Objects.requireNonNull(precio);
+        this.value = Objects.requireNonNull(value);
     }
 
     private void validarLongitudPrecio(String precio) {
@@ -42,17 +42,17 @@ public class Precio implements ValueObject<String> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Precio precio1 = (Precio) o;
-        return Objects.equals(precio, precio1.precio);
+        var precio1 = (Precio) o;
+        return Objects.equals(value, precio1.value);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(precio);
+        return Objects.hash(value);
     }
 
     @Override
     public String value() {
-        return precio;
+        return value;
     }
 }

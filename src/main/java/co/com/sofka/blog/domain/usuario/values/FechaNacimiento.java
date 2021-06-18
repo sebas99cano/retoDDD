@@ -7,11 +7,10 @@ import java.util.Objects;
 
 public class FechaNacimiento implements ValueObject<Date> {
 
-    private final Date fechaNacimiento;
+    private final Date value;
 
-    public FechaNacimiento(Date fechaNacimiento) {
-        //TODO:v validar la fecha
-        this.fechaNacimiento = Objects.requireNonNull(fechaNacimiento);
+    public FechaNacimiento(Date value) {
+        this.value = Objects.requireNonNull(value);
     }
 
     @Override
@@ -19,16 +18,16 @@ public class FechaNacimiento implements ValueObject<Date> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         FechaNacimiento that = (FechaNacimiento) o;
-        return Objects.equals(fechaNacimiento, that.fechaNacimiento);
+        return Objects.equals(value, that.value);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(fechaNacimiento);
+        return Objects.hash(value);
     }
 
     @Override
     public Date value() {
-        return fechaNacimiento;
+        return value;
     }
 }

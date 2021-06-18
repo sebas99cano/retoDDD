@@ -6,34 +6,34 @@ import java.util.Objects;
 
 public class Nombre implements ValueObject<String> {
 
-    private final String nombre;
+    private final String value;
 
-    public Nombre(String nombre) {
-        if(nombre.length()<5){
+    public Nombre(String value) {
+        if(value.length()<5){
             throw new IllegalArgumentException("El nombre no puede ser menor a 5 caracteres");
         }
 
-        if(nombre.length()>75){
+        if(value.length()>75){
             throw new IllegalArgumentException("El nombre no puede ser mayor a 100 caracteres");
         }
-        this.nombre = Objects.requireNonNull(nombre);
+        this.value = Objects.requireNonNull(value);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Nombre nombre1 = (Nombre) o;
-        return Objects.equals(nombre, nombre1.nombre);
+        var nombre1 = (Nombre) o;
+        return Objects.equals(value, nombre1.value);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(nombre);
+        return Objects.hash(value);
     }
 
     @Override
     public String value() {
-        return nombre;
+        return value;
     }
 }
