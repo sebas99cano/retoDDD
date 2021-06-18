@@ -31,14 +31,14 @@ class ModificarDescripcionDeComentarioUseCaseTest {
     private DomainEventRepository repository;
 
     @BeforeEach
-    private void setup(){
+    private void setup() {
         modificarDescripcionDeComentarioUseCase = new ModificarDescripcionDeComentarioUseCase();
         repository = mock(DomainEventRepository.class);
         modificarDescripcionDeComentarioUseCase.addRepository(repository);
     }
 
     @Test
-    void modificarDescripcionDeComentarioHappyPath(){
+    void modificarDescripcionDeComentarioHappyPath() {
         //arrange
         var command = new ModificarDescripcionDeComentario(
                 IdPublicacion.of("xxx-xxxx"),
@@ -46,16 +46,16 @@ class ModificarDescripcionDeComentarioUseCaseTest {
                 new Descripcion("esto es una descripcion valida")
         );
         when(repository.getEventsBy(any())).thenReturn(events());
-    //act
+        //act
         var response = UseCaseHandler.getInstance()
                 .setIdentifyExecutor("xxx-xxx")
                 .syncExecutor(
                         modificarDescripcionDeComentarioUseCase,
                         new RequestCommand<>(command)
                 ).orElseThrow();
-        var evento = (DescripcionDeComentarioModificado)response.getDomainEvents().get(0);
-    //assert
-        Assertions.assertEquals("esto es una descripcion valida",evento.getDescripcion().value());
+        var evento = (DescripcionDeComentarioModificado) response.getDomainEvents().get(0);
+        //assert
+        Assertions.assertEquals("esto es una descripcion valida", evento.getDescripcion().value());
     }
 
     private List<DomainEvent> events() {
@@ -64,10 +64,10 @@ class ModificarDescripcionDeComentarioUseCaseTest {
                 IdContenido.of("id-contenido"),
                 new Descripcion("Esta es la descripcion para la primer publicacion"),
                 new Titulo("Primer titulo")
-        ),new ComentarioAgregado(
+        ), new ComentarioAgregado(
                 IdComentario.of("xx-xx"),
                 new Descripcion("esta descripcion es diferente ok"),
-                new Autor(IdUsuario.of("userid-1"),"autor numero1")
+                new Autor(IdUsuario.of("userid-1"), "autor numero1")
         ));
     }
 

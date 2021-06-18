@@ -10,7 +10,7 @@ public class AumentarRangoDeSuscripcionUseCase extends UseCase<RequestCommand<Au
     @Override
     public void executeUseCase(RequestCommand<AumentarRangoDeSuscripcion> aumentarRangoDeSuscripcionUseCaseRequestCommand) {
         var command = aumentarRangoDeSuscripcionUseCaseRequestCommand.getCommand();
-        var usuario = Usuario.from(command.getIdUsuario(),retrieveEvents(command.getIdUsuario().value()));
+        var usuario = Usuario.from(command.getIdUsuario(), retrieveEvents(command.getIdUsuario().value()));
 
         usuario.aumentarRangoDeSuscripcion(command.getRango());
         emit().onResponse(new ResponseEvents(usuario.getUncommittedChanges()));

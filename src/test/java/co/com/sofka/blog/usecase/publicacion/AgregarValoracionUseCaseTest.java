@@ -1,4 +1,5 @@
 package co.com.sofka.blog.usecase.publicacion;
+
 import co.com.sofka.blog.domain.publicacion.commands.AgregarValoracion;
 import co.com.sofka.blog.domain.publicacion.events.PublicacionCreada;
 import co.com.sofka.blog.domain.publicacion.events.ValoracionAgregada;
@@ -27,14 +28,14 @@ class AgregarValoracionUseCaseTest {
     private DomainEventRepository repository;
 
     @BeforeEach
-    private void setup(){
+    private void setup() {
         agregarValoracionUseCase = new AgregarValoracionUseCase();
         repository = mock(DomainEventRepository.class);
         agregarValoracionUseCase.addRepository(repository);
     }
 
     @Test
-    void agregarValoracionHappyPath(){
+    void agregarValoracionHappyPath() {
         //
         var command = new AgregarValoracion(
                 IdPublicacion.of("xxx-xxx"),
@@ -47,20 +48,20 @@ class AgregarValoracionUseCaseTest {
         );
 
         when(repository.getEventsBy(any())).thenReturn(events());
-    //ACT
+        //ACT
         var response = UseCaseHandler.getInstance()
                 .setIdentifyExecutor("xxx-xxx")
                 .syncExecutor(
                         agregarValoracionUseCase,
                         new RequestCommand<>(command)
                 ).orElseThrow();
-        var evento = (ValoracionAgregada)response.getDomainEvents().get(0);
+        var evento = (ValoracionAgregada) response.getDomainEvents().get(0);
 
         //ASSERT
-        Assertions.assertEquals(3,evento.getPuntuacion().value());
-        Assertions.assertEquals("xx-xx",evento.getIdValoracion().value());
-        Assertions.assertEquals("id-user-1",evento.getAutor().value().idUsuario().value());
-        Assertions.assertEquals("Sebastian Cano",evento.getAutor().value().nombre());
+        Assertions.assertEquals(3, evento.getPuntuacion().value());
+        Assertions.assertEquals("xx-xx", evento.getIdValoracion().value());
+        Assertions.assertEquals("id-user-1", evento.getAutor().value().idUsuario().value());
+        Assertions.assertEquals("Sebastian Cano", evento.getAutor().value().nombre());
     }
 
     private List<DomainEvent> events() {

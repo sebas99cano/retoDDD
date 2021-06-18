@@ -10,7 +10,7 @@ public class ModificarNombreDePersonaUseCase extends UseCase<RequestCommand<Modi
     @Override
     public void executeUseCase(RequestCommand<ModificarNombreDePersona> modificarNombreDePersonaRequestCommand) {
         var command = modificarNombreDePersonaRequestCommand.getCommand();
-        var usuario = Usuario.from(command.getIdUsuario(),retrieveEvents(command.getIdUsuario().value()));
+        var usuario = Usuario.from(command.getIdUsuario(), retrieveEvents(command.getIdUsuario().value()));
 
         usuario.modificarNombreDePersona(command.getNombre());
         emit().onResponse(new ResponseEvents(usuario.getUncommittedChanges()));

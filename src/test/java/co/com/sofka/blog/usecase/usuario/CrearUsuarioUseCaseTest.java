@@ -20,12 +20,12 @@ class CrearUsuarioUseCaseTest {
     private CrearUsuarioUseCase crearUsuarioUseCase;
 
     @BeforeEach
-    public void setup(){
+    public void setup() {
         crearUsuarioUseCase = new CrearUsuarioUseCase();
     }
 
     @Test
-    void crearUsuarioHappyPath(){
+    void crearUsuarioHappyPath() {
         //arrange
         var command = new CrearUsuario(
                 IdUsuario.of("xxx-xxx"),
@@ -33,7 +33,7 @@ class CrearUsuarioUseCaseTest {
                         new Precio("50000"),
                         new Rango(1)),
                 new Persona(new IdPersona("xxx-xx2"),
-                        new FechaNacimiento(new Date(100,5,3)),
+                        new FechaNacimiento(new Date(100, 5, 3)),
                         new Nombre("Sebastian cano grajales"),
                         new Correo("sebas99cano@gmail.com"),
                         new Telefono("3058935891")),
@@ -43,19 +43,19 @@ class CrearUsuarioUseCaseTest {
         );
 
         //act
-        var response=UseCaseHandler.getInstance().
+        var response = UseCaseHandler.getInstance().
                 syncExecutor(crearUsuarioUseCase, new RequestCommand<>(command)).orElseThrow();
 
         var events = response.getDomainEvents();
 
         //asserts
-        UsuarioCreado usuarioCreado = (UsuarioCreado)events.get(0);
+        UsuarioCreado usuarioCreado = (UsuarioCreado) events.get(0);
 
-        Assertions.assertEquals("Sebastian cano grajales",usuarioCreado.getPersona().nombre().value());
-        Assertions.assertEquals("sebas99cano@gmail.com",usuarioCreado.getPersona().correo().value());
-        Assertions.assertEquals("clave123",usuarioCreado.getCuenta().claveUsuario().value());
-        Assertions.assertEquals("sebas99cano",usuarioCreado.getCuenta().nombreUsuario().value());
-        Assertions.assertEquals(1,usuarioCreado.getSuscripcion().rango().value());
+        Assertions.assertEquals("Sebastian cano grajales", usuarioCreado.getPersona().nombre().value());
+        Assertions.assertEquals("sebas99cano@gmail.com", usuarioCreado.getPersona().correo().value());
+        Assertions.assertEquals("clave123", usuarioCreado.getCuenta().claveUsuario().value());
+        Assertions.assertEquals("sebas99cano", usuarioCreado.getCuenta().nombreUsuario().value());
+        Assertions.assertEquals(1, usuarioCreado.getSuscripcion().rango().value());
     }
 
 }

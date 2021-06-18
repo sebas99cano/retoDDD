@@ -26,20 +26,20 @@ import static org.mockito.Mockito.when;
 
 class ModificarTelefonoDePersonaUseCaseTest {
 
-    private  ModificarTelefonoDePersonaUseCase modificarTelefonoDePersonaUseCase;
+    private ModificarTelefonoDePersonaUseCase modificarTelefonoDePersonaUseCase;
 
     @Mock
     private DomainEventRepository repository;
 
     @BeforeEach
-    public void setup(){
+    public void setup() {
         modificarTelefonoDePersonaUseCase = new ModificarTelefonoDePersonaUseCase();
         repository = mock(DomainEventRepository.class);
         modificarTelefonoDePersonaUseCase.addRepository(repository);
     }
 
     @Test
-    void modificarTelefonoDePersonaHappyPath(){
+    void modificarTelefonoDePersonaHappyPath() {
         //arrange
         var command = new ModificarTelefonoDePersona(
                 IdUsuario.of("xxx-xxx"),
@@ -56,11 +56,11 @@ class ModificarTelefonoDePersonaUseCaseTest {
                         modificarTelefonoDePersonaUseCase,
                         new RequestCommand<>(command)
                 ).orElseThrow();
-        var evento = (TelefonoDePersonaModificado)response.getDomainEvents().get(0);
+        var evento = (TelefonoDePersonaModificado) response.getDomainEvents().get(0);
 
         //assert
 
-        Assertions.assertEquals("3004225879",evento.getTelefono().value());
+        Assertions.assertEquals("3004225879", evento.getTelefono().value());
     }
 
     private List<DomainEvent> events() {
@@ -69,7 +69,7 @@ class ModificarTelefonoDePersonaUseCaseTest {
                         new Precio("50000"),
                         new Rango(1)),
                 new Persona(new IdPersona("xxx-xx2"),
-                        new FechaNacimiento(new Date(100,5,3)),
+                        new FechaNacimiento(new Date(100, 5, 3)),
                         new Nombre("Sebastian cano grajales"),
                         new Correo("sebas99cano@gmail.com"),
                         new Telefono("3058935891")),

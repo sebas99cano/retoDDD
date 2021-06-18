@@ -13,7 +13,7 @@ public class AgregarValoracionNotificarUseCase extends UseCase<TriggeredEvent<Va
         var senderEmailService = getService(SenderEmailService.class).orElseThrow();
 
         var email = valoracionService.getCorreoPorIdUsuario(event.getAutor().value().idUsuario());
-        senderEmailService.sendEmail(email,"valoracion agregada");
+        senderEmailService.sendEmail(email, "valoracion agregada");
     }
 }
 

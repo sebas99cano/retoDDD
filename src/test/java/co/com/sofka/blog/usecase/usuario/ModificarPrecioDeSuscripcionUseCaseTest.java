@@ -32,14 +32,14 @@ class ModificarPrecioDeSuscripcionUseCaseTest {
     private DomainEventRepository repository;
 
     @BeforeEach
-    private void setup(){
+    private void setup() {
         modificarPrecioDeSuscripcionUseCase = new ModificarPrecioDeSuscripcionUseCase();
         repository = mock(DomainEventRepository.class);
         modificarPrecioDeSuscripcionUseCase.addRepository(repository);
     }
 
     @Test
-    void modificarPrecioDeSuscripcionHappyPath(){
+    void modificarPrecioDeSuscripcionHappyPath() {
         //arrange
         var command = new ModificarPrecioDeSuscripcion(
                 IdUsuario.of("xxx-xxx"),
@@ -55,9 +55,9 @@ class ModificarPrecioDeSuscripcionUseCaseTest {
                         modificarPrecioDeSuscripcionUseCase,
                         new RequestCommand<>(command)
                 ).orElseThrow();
-        var evento = (PrecioDeSuscripcionModificado)response.getDomainEvents().get(0);
+        var evento = (PrecioDeSuscripcionModificado) response.getDomainEvents().get(0);
         //assert
-        Assertions.assertEquals("100000",evento.getPrecio().value());
+        Assertions.assertEquals("100000", evento.getPrecio().value());
     }
 
     private List<DomainEvent> events() {
@@ -66,7 +66,7 @@ class ModificarPrecioDeSuscripcionUseCaseTest {
                         new Precio("50000"),
                         new Rango(2)),
                 new Persona(new IdPersona("xxx-xx2"),
-                        new FechaNacimiento(new Date(100,5,3)),
+                        new FechaNacimiento(new Date(100, 5, 3)),
                         new Nombre("Sebastian cano grajales"),
                         new Correo("sebas99cano@gmail.com"),
                         new Telefono("3058935891")),
@@ -75,7 +75,6 @@ class ModificarPrecioDeSuscripcionUseCaseTest {
                         new NombreUsuario("sebas99cano"))
         ));
     }
-
 
 
 }

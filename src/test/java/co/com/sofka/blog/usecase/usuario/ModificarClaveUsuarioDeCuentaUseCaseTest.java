@@ -24,7 +24,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 
-class ModificarClaveUsuarioDeCuentaUseCaseTest  {
+class ModificarClaveUsuarioDeCuentaUseCaseTest {
 
     private ModificarClaveUsuarioDeCuentaUseCase modificarClaveUsuarioDeCuentaUseCase;
 
@@ -32,34 +32,34 @@ class ModificarClaveUsuarioDeCuentaUseCaseTest  {
     private DomainEventRepository repository;
 
     @BeforeEach
-    public void setup(){
+    public void setup() {
         modificarClaveUsuarioDeCuentaUseCase = new ModificarClaveUsuarioDeCuentaUseCase();
         repository = mock(DomainEventRepository.class);
         modificarClaveUsuarioDeCuentaUseCase.addRepository(repository);
     }
 
     @Test
-    void modificarClaveUsuarioDeCuentaHappyPath(){
+    void modificarClaveUsuarioDeCuentaHappyPath() {
         //arrange
         var command = new ModificarClaveUsuarioDeCuenta(
                 IdUsuario.of("xxx-xxx"),
                 new ClaveUsuario("nuevaclave")
         );
 
-       when(repository.getEventsBy(any())).thenReturn(events());
+        when(repository.getEventsBy(any())).thenReturn(events());
 
         //act
         var response = UseCaseHandler.getInstance().
                 setIdentifyExecutor("xxx-xxx").
                 syncExecutor(
-                modificarClaveUsuarioDeCuentaUseCase,
-                new RequestCommand<>(command)
-        ).orElseThrow();
+                        modificarClaveUsuarioDeCuentaUseCase,
+                        new RequestCommand<>(command)
+                ).orElseThrow();
 
-        var evento = (ClaveUsuarioDeCuentaModificado)response.getDomainEvents().get(0);
+        var evento = (ClaveUsuarioDeCuentaModificado) response.getDomainEvents().get(0);
 
         //Assert
-        Assertions.assertEquals("nuevaclave",evento.getClaveUsuario().value());
+        Assertions.assertEquals("nuevaclave", evento.getClaveUsuario().value());
     }
 
     private List<DomainEvent> events() {
@@ -68,7 +68,7 @@ class ModificarClaveUsuarioDeCuentaUseCaseTest  {
                         new Precio("50000"),
                         new Rango(1)),
                 new Persona(new IdPersona("xxx-xx2"),
-                        new FechaNacimiento(new Date(100,5,3)),
+                        new FechaNacimiento(new Date(100, 5, 3)),
                         new Nombre("Sebastian cano grajales"),
                         new Correo("sebas99cano@gmail.com"),
                         new Telefono("3058935891")),

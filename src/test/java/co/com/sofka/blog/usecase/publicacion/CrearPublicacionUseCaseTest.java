@@ -19,12 +19,12 @@ class CrearPublicacionUseCaseTest {
     private CrearPublicacionUseCase crearPublicacionUseCase;
 
     @BeforeEach
-    public void setup(){
+    public void setup() {
         crearPublicacionUseCase = new CrearPublicacionUseCase();
     }
 
     @Test
-    void crearPublicacionHappyPath(){
+    void crearPublicacionHappyPath() {
         //arrange
         var command = new CrearPublicacion(
                 IdPublicacion.of("xxx-xxx-xxx"),
@@ -39,7 +39,7 @@ class CrearPublicacionUseCaseTest {
                         crearPublicacionUseCase,
                         new RequestCommand<>(command)
                 ).orElseThrow();
-        var events = (PublicacionCreada)response.getDomainEvents().get(0);
+        var events = (PublicacionCreada) response.getDomainEvents().get(0);
         //assert
         Assertions.assertEquals("Primer titulo", events.getTitulo().value());
         Assertions.assertEquals("Esta es la descripcion para la primer publicacion", events.getDescripcion().value());

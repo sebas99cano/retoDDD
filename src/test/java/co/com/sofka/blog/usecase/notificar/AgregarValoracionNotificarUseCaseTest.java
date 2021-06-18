@@ -23,7 +23,7 @@ class AgregarValoracionNotificarUseCaseTest {
     private SenderEmailService senderEmailService;
 
     @BeforeEach
-    public void setup(){
+    public void setup() {
         agregarValoracionNotificarUseCase = new AgregarValoracionNotificarUseCase();
         valoracionService = mock(ValoracionService.class);
         senderEmailService = mock(SenderEmailService.class);
@@ -35,7 +35,7 @@ class AgregarValoracionNotificarUseCaseTest {
     }
 
     @Test
-    void agregarValoracionNotificarHappyPath(){
+    void agregarValoracionNotificarHappyPath() {
         //arrange
         var event = new ValoracionAgregada(
                 IdValoracion.of("xx-xx"),
@@ -47,7 +47,7 @@ class AgregarValoracionNotificarUseCaseTest {
         );
 
         when(valoracionService.getCorreoPorIdUsuario(any())).thenReturn(new Correo("sebas99cano@gmail.com.co"));
-        doNothing().when(senderEmailService).sendEmail(any(),anyString());
+        doNothing().when(senderEmailService).sendEmail(any(), anyString());
 
         var response = UseCaseHandler.getInstance()
                 .syncExecutor(
@@ -57,7 +57,7 @@ class AgregarValoracionNotificarUseCaseTest {
 
         //assert
         verify(valoracionService).getCorreoPorIdUsuario(any());
-        verify(senderEmailService).sendEmail(any(),anyString());
+        verify(senderEmailService).sendEmail(any(), anyString());
 
     }
 }

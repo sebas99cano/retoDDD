@@ -74,7 +74,7 @@ class AumentarRangoDeSuscripcionUseCaseTest {
         });
 
         //Assert
-        Assertions.assertEquals("El rango no es valido, debe ser un valor entre 1 y 3",response.getMessage());
+        Assertions.assertEquals("El rango no es valido, debe ser un valor entre 1 y 3", response.getMessage());
 
     }
 

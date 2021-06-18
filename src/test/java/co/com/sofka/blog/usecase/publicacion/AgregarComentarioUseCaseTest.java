@@ -28,14 +28,14 @@ class AgregarComentarioUseCaseTest {
     private DomainEventRepository repository;
 
     @BeforeEach
-    private void setup(){
+    private void setup() {
         agregarComentarioUseCase = new AgregarComentarioUseCase();
         repository = mock(DomainEventRepository.class);
         agregarComentarioUseCase.addRepository(repository);
     }
 
     @Test
-    void agregarComentarioHappyPath(){
+    void agregarComentarioHappyPath() {
         var command = new AgregarComentario(
                 IdPublicacion.of("xxx-xxx"),
                 IdComentario.of("xx-xx"),
@@ -52,12 +52,12 @@ class AgregarComentarioUseCaseTest {
                         agregarComentarioUseCase,
                         new RequestCommand<>(command)
                 ).orElseThrow();
-        var evento = (ComentarioAgregado)response.getDomainEvents().get(0);
+        var evento = (ComentarioAgregado) response.getDomainEvents().get(0);
 
-        Assertions.assertEquals("Esta es la descripcion del comentario actualizada",evento.getDescripcion().value());
-        Assertions.assertEquals("xx-xx",evento.getIdComentario().value());
-        Assertions.assertEquals("id-user-1",evento.getAutor().value().idUsuario().value());
-        Assertions.assertEquals("Sebastian Cano",evento.getAutor().value().nombre());
+        Assertions.assertEquals("Esta es la descripcion del comentario actualizada", evento.getDescripcion().value());
+        Assertions.assertEquals("xx-xx", evento.getIdComentario().value());
+        Assertions.assertEquals("id-user-1", evento.getAutor().value().idUsuario().value());
+        Assertions.assertEquals("Sebastian Cano", evento.getAutor().value().nombre());
 
     }
 

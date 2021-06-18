@@ -10,7 +10,7 @@ public class DisminuirRangoDeSuscripcionUseCase extends UseCase<RequestCommand<D
     @Override
     public void executeUseCase(RequestCommand<DisminuirRangoDeSuscripcion> disminuirRangoDeSuscripcionRequestCommand) {
         var command = disminuirRangoDeSuscripcionRequestCommand.getCommand();
-        var usuario = Usuario.from(command.getIdUsuario(),retrieveEvents(command.getIdUsuario().value()));
+        var usuario = Usuario.from(command.getIdUsuario(), retrieveEvents(command.getIdUsuario().value()));
 
         usuario.disminuirRangoDeSuscripcion(command.getRango());
         emit().onResponse(new ResponseEvents(usuario.getUncommittedChanges()));

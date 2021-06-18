@@ -24,7 +24,7 @@ class AgregarComentarioNotificarUseCaseTest {
     private SenderEmailService senderEmailService;
 
     @BeforeEach
-    public void setup(){
+    public void setup() {
         agregarComentarioNotificarUseCase = new AgregarComentarioNotificarUseCase();
         comnetarioService = mock(ComnetarioService.class);
         senderEmailService = mock(SenderEmailService.class);
@@ -37,7 +37,7 @@ class AgregarComentarioNotificarUseCaseTest {
     }
 
     @Test
-    void agregarComentarioNotificarHappyPath(){
+    void agregarComentarioNotificarHappyPath() {
         var event = new ComentarioAgregado(
                 IdComentario.of("xx-xx"),
                 new Descripcion("nueva descripcion del comentario"),
@@ -48,7 +48,7 @@ class AgregarComentarioNotificarUseCaseTest {
         );
 
         when(comnetarioService.getCorreoPorIdUsuario(any())).thenReturn(new Correo("sebas99cano@gmail.com"));
-        doNothing().when(senderEmailService).sendEmail(any(),anyString());
+        doNothing().when(senderEmailService).sendEmail(any(), anyString());
 
         var response = UseCaseHandler.getInstance()
                 .syncExecutor(
@@ -57,7 +57,7 @@ class AgregarComentarioNotificarUseCaseTest {
                 );
 
         verify(comnetarioService).getCorreoPorIdUsuario(any());
-        verify(senderEmailService).sendEmail(any(),anyString());
+        verify(senderEmailService).sendEmail(any(), anyString());
     }
 
 }

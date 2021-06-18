@@ -33,14 +33,14 @@ class DisminuirRangoDeSuscripcionUseCaseTest {
     private DomainEventRepository repository;
 
     @BeforeEach
-    public void setup(){
+    public void setup() {
         disminuirRangoDeSuscripcionUseCase = new DisminuirRangoDeSuscripcionUseCase();
         repository = mock(DomainEventRepository.class);
         disminuirRangoDeSuscripcionUseCase.addRepository(repository);
     }
 
     @Test
-    void disminuirRangoDeSuscripcionHappyPath(){
+    void disminuirRangoDeSuscripcionHappyPath() {
         //arrange
         var command = new DisminuirRangoDeSuscripcion(
                 IdUsuario.of("xxx-xxx"),
@@ -55,10 +55,10 @@ class DisminuirRangoDeSuscripcionUseCaseTest {
                         disminuirRangoDeSuscripcionUseCase,
                         new RequestCommand<>(command)
                 ).orElseThrow();
-        var evento = (RangoDeSuscripcionDisminuido)response.getDomainEvents().get(0);
+        var evento = (RangoDeSuscripcionDisminuido) response.getDomainEvents().get(0);
 
         //assert
-        Assertions.assertEquals(1,evento.getRango().value());
+        Assertions.assertEquals(1, evento.getRango().value());
     }
 
     @Test
@@ -72,7 +72,7 @@ class DisminuirRangoDeSuscripcionUseCaseTest {
         });
 
         //Assert
-        Assertions.assertEquals("El rango no es valido, debe ser un valor entre 1 y 3",response.getMessage());
+        Assertions.assertEquals("El rango no es valido, debe ser un valor entre 1 y 3", response.getMessage());
 
     }
 
@@ -82,7 +82,7 @@ class DisminuirRangoDeSuscripcionUseCaseTest {
                         new Precio("50000"),
                         new Rango(2)),
                 new Persona(new IdPersona("xxx-xx2"),
-                        new FechaNacimiento(new Date(100,5,3)),
+                        new FechaNacimiento(new Date(100, 5, 3)),
                         new Nombre("Sebastian cano grajales"),
                         new Correo("sebas99cano@gmail.com"),
                         new Telefono("3058935891")),

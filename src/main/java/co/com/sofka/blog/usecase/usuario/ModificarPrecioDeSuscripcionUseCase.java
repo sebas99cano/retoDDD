@@ -10,7 +10,7 @@ public class ModificarPrecioDeSuscripcionUseCase extends UseCase<RequestCommand<
     @Override
     public void executeUseCase(RequestCommand<ModificarPrecioDeSuscripcion> modificarPrecioDeSuscripcionRequestCommand) {
         var command = modificarPrecioDeSuscripcionRequestCommand.getCommand();
-        var usuario = Usuario.from(command.getIdUsuario(),retrieveEvents(command.getIdUsuario().value()));
+        var usuario = Usuario.from(command.getIdUsuario(), retrieveEvents(command.getIdUsuario().value()));
 
         usuario.modificarPrecioDeSuscripcion(command.getPrecio());
         emit().onResponse(new ResponseEvents(usuario.getUncommittedChanges()));

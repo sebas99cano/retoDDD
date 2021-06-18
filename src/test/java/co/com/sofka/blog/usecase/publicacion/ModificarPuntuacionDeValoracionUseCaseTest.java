@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
+
 import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -28,14 +29,14 @@ class ModificarPuntuacionDeValoracionUseCaseTest {
     private DomainEventRepository repository;
 
     @BeforeEach
-    private void setup(){
+    private void setup() {
         modificarPuntuacionDeValoracionUseCase = new ModificarPuntuacionDeValoracionUseCase();
         repository = mock(DomainEventRepository.class);
         modificarPuntuacionDeValoracionUseCase.addRepository(repository);
     }
 
     @Test
-    void modificarPuntuacionDeValoracionHappyPath(){
+    void modificarPuntuacionDeValoracionHappyPath() {
         //arrange
         var command = new ModificarPuntuacionDeValoracion(
                 IdPublicacion.of("xxx-xxx"),
@@ -51,19 +52,20 @@ class ModificarPuntuacionDeValoracionUseCaseTest {
                         new RequestCommand<>(command)
                 ).orElseThrow();
 
-        var evento = (PuntuacionDeValoracionModificado)response.getDomainEvents().get(0);
+        var evento = (PuntuacionDeValoracionModificado) response.getDomainEvents().get(0);
         //assert
-        Assertions.assertEquals(3,evento.getPuntuacion().value());
+        Assertions.assertEquals(3, evento.getPuntuacion().value());
     }
+
     private List<DomainEvent> events() {
         return List.of(new PublicacionCreada(
                 IdUsuario.of("id-user-1"),
                 IdContenido.of("id-contenido"),
                 new Descripcion("Esta es la descripcion para la primer publicacion"),
                 new Titulo("Primer titulo")
-        ),new ValoracionAgregada(
+        ), new ValoracionAgregada(
                 IdValoracion.of("xx-x2"),
-                new Autor(IdUsuario.of("userid-1"),"autor numero1"),
+                new Autor(IdUsuario.of("userid-1"), "autor numero1"),
                 new Puntuacion(4)
         ));
     }

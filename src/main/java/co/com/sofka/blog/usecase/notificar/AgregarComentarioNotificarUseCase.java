@@ -13,6 +13,6 @@ public class AgregarComentarioNotificarUseCase extends UseCase<TriggeredEvent<Co
         var senderEmailService = getService(SenderEmailService.class).orElseThrow();
 
         var email = comentarioService.getCorreoPorIdUsuario(event.getAutor().value().idUsuario());
-        senderEmailService.sendEmail(email,"nuevo comentario");
+        senderEmailService.sendEmail(email, "nuevo comentario");
     }
 }

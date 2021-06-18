@@ -32,14 +32,14 @@ class ModificarNombreDePersonaUseCaseTest {
     private DomainEventRepository repository;
 
     @BeforeEach
-    public void setup(){
+    public void setup() {
         modificarNombreDePersonaUseCase = new ModificarNombreDePersonaUseCase();
         repository = mock(DomainEventRepository.class);
         modificarNombreDePersonaUseCase.addRepository(repository);
     }
 
     @Test
-    void modificarNombreDePersonaHappyPath(){
+    void modificarNombreDePersonaHappyPath() {
         //arrange
         var command = new ModificarNombreDePersona(
                 IdUsuario.of("xxx-xxx"),
@@ -52,15 +52,15 @@ class ModificarNombreDePersonaUseCaseTest {
 
         var response = UseCaseHandler.getInstance().
                 setIdentifyExecutor("xxx-xxx").syncExecutor(
-                        modificarNombreDePersonaUseCase,
+                modificarNombreDePersonaUseCase,
                 new RequestCommand<>(command)
         ).orElseThrow();
 
-        var evento = (NombreDePersonaModificado)response.getDomainEvents().get(0);
+        var evento = (NombreDePersonaModificado) response.getDomainEvents().get(0);
 
-        //
-        Assertions.assertEquals("Juan Sebastian",evento.getNombre().value());
-        Assertions.assertEquals("blog.usuario.nombredepersonamodificado",evento.type);
+        //assert
+        Assertions.assertEquals("Juan Sebastian", evento.getNombre().value());
+        Assertions.assertEquals("blog.usuario.nombredepersonamodificado", evento.type);
     }
 
     private List<DomainEvent> events() {
@@ -69,7 +69,7 @@ class ModificarNombreDePersonaUseCaseTest {
                         new Precio("50000"),
                         new Rango(1)),
                 new Persona(new IdPersona("xxx-xx2"),
-                        new FechaNacimiento(new Date(100,5,3)),
+                        new FechaNacimiento(new Date(100, 5, 3)),
                         new Nombre("Sebastian cano grajales"),
                         new Correo("sebas99cano@gmail.com"),
                         new Telefono("3058935891")),
